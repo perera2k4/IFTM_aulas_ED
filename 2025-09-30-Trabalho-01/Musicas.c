@@ -11,8 +11,7 @@
 #define MAX_ARTIST_LENGTH 50
 #define FILENAME "musicas.txt"
 
-// --- Modulo Musica.h ---
-// Definicao da estrutura de um item (Musica)
+// Definicao da estrutura do tipo Musica
 typedef struct Musica {
     int id;
     char titulo[MAX_TITLE_LENGTH];
@@ -23,7 +22,6 @@ typedef struct Musica {
     struct Musica* prev; // Apenas para a lista duplamente ligada
 } Musica;
 
-// --- Modulo Pilha.c ---
 // Estrutura para a pilha de historico
 typedef struct Stack {
     Musica* top;
@@ -81,7 +79,6 @@ void reverseStack(Stack* stack) {
     stack->top = tempStack.top;
 }
 
-// --- Modulo Fila.c ---
 // Estrutura para a fila de playlist
 typedef struct Queue {
     Musica* front;
@@ -154,14 +151,13 @@ int countLongSongs(Queue* queue, int minDuration) {
     return count;
 }
 
-// --- Modulo ListaDuplamenteLigada.c ---
 // Estrutura da lista duplamente ligada para a biblioteca
 typedef struct {
     Musica* head;
     Musica* tail;
 } DoublyLinkedList;
 
-// Funcao para inicializar a lista
+// Funcao para inicializar a lista duplamente ligada
 void initializeList(DoublyLinkedList* list) {
     list->head = NULL;
     list->tail = NULL;
@@ -286,7 +282,7 @@ void displayLibrary(DoublyLinkedList* list) {
     printf("------------------------------\n");
 }
 
-// --- Funcoes de Salvar e Carregar ---
+// Funcoes de Salvar e Carregar
 void saveLibraryToFile(DoublyLinkedList* list) {
     FILE* file = fopen(FILENAME, "w");
     if (file == NULL) {
